@@ -1,6 +1,6 @@
 class HashMap:
     def __init__(self):
-        self.size = 6
+        self.size = 40
         self.map = [None] * self.size
 
     def _get_hash(self, key):
@@ -46,3 +46,4 @@ class HashMap:
         for item in self.map:
             if item is not None:
                 print(str(item))
+
