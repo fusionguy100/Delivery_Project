@@ -1,5 +1,4 @@
-#Jacob Newell
-#011742870
+
 
 
 class HashMap:

@@ -25,7 +25,7 @@ class Truck:
         self.current_location = address
 
 
-
+    #def check_for_special_notes(self, package_id, ):
 
     def add_miles(self, miles):
         #Update milage and time/speed
