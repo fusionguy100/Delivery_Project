@@ -123,8 +123,8 @@ def deliver_packages(truck, package_table, distance_matrix, address_list):
         #Before picking the next package, check if it’s time to correct #9
         if not corrected and truck.current_time >= correction_time and 9 in truck.packages:
             package9 = package_table.get(9)
-            package9.address = "410 S State St"
-            package9.zip_code = '84111'
+            package9.corrected_address = "410 S State St"
+            package9.corrected_zipcode = '84111'
             corrected = True  # don’t repeat
 
         min_distance = float('inf') #infinity
@@ -161,11 +161,19 @@ def show_status_at_time(package_table, check_time, truck1, truck2, truck3):
     print("------------------------------------------")
     print(f"Delivery report of all packages at {check_time.strftime('%I:%M %p')}")
     print("------------------------------------------")
-
+    correction_time = datetime.datetime(check_time.year, check_time.month, check_time.day, 10, 20)
     for pkg_id in range(1, 41):
         package = package_table.get(pkg_id)
         if not package:
             continue
+
+        display_address = package.address
+        display_zip = package.zip_code
+
+        #display package 9 correctly
+        if package.corrected_address and check_time >= correction_time:
+            display_address = package.corrected_address
+            display_zip = package.corrected_zipcode
 
         # 1) In Air if delayed on flight and before its truck departs
         if ("delayed on flight" in package.special_notes.lower()
@@ -185,10 +193,7 @@ def show_status_at_time(package_table, check_time, truck1, truck2, truck3):
         else:
             status = "At Hub"
 
-        print(f"[Package ID = {package.package_id:<2}] Truck: {package.assigned_truck} | Delivery Status: {status}")
-        print(f" Address: {package.address}  City: {package.city}  ZIP: {package.zip_code}")
-        print(f" Weight: {package.weight_kilo} kg  Deadline: {package.delivery_deadline}")
-        print()
+        print(f"[Package ID = {package.package_id:<2}] Truck: {package.assigned_truck} | Delivery Status: {status} |  Address: {display_address}  City: {package.city}  ZIP: {display_zip} | Weight: {package.weight_kilo} kg  Deadline: {package.delivery_deadline} |  ")
 
     #get truck mileage at specific time
     def get_mileage_at_time(truck):
@@ -243,7 +248,8 @@ def main():
     # load packages & set start times
     for t in (truck1, truck2, truck3):
         load_trucks(t, package_table)
-
+    package9 = package_table.get(9)
+    print(package9.address)
     # perform deliveries
     deliver_packages(truck1, package_table, distance_matrix, address_list)
     deliver_packages(truck2, package_table, distance_matrix, address_list)

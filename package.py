@@ -16,6 +16,8 @@ class Package:
             self.delivery_time = None
             self.truck_start_time = None
             self.assigned_truck = None
+            self.corrected_address = None
+            self.corrected_zipcode= None
 
 
     #in conjunction without lookup function
@@ -24,6 +26,7 @@ class Package:
                 f"Deadline: {self.delivery_deadline} | Weight: {self.weight_kilo}kg | Notes: {self.special_notes} | "
                 f"Delivery Status: {self.delivery_status} | Delivery Time: {self.delivery_time} | "
                 f"On Truck: {self.assigned_truck}")
+
 
 
 
