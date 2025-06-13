@@ -4,7 +4,7 @@
 
 This project simulates a real-world package delivery routing system for **Western Governors University Parcel Service (WGUPS)**. The goal is to optimize package deliveries using a custom routing algorithm and meet delivery deadlines, while considering business rules and constraints.
 
-This was developed as part of the C950: Data Structures and Algorithms course at Western Governors University.
+
 
 ---
 
