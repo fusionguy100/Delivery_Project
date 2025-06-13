@@ -86,12 +86,6 @@ python main.py
 
 ---
 
-## Author
-
-Jake Henry  
-Computer Science Student – WGU  
-GitHub: [your GitHub username]  
-Email: [your email if you want to include it]
 
 ---
 
