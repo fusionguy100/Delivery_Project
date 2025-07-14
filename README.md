@@ -1,4 +1,4 @@
-# WGUPS Delivery Routing Program
+#  Delivery Routing Program
 
 ## Overview
 
@@ -45,7 +45,7 @@ This project simulates a real-world package delivery routing system for **Wester
 
 - Python 3.x
 
-If you're using external packages (not typical for C950), include them in a `requirements.txt`.
+If you're using external packages, include them in a `requirements.txt`.
 
 ---
 
